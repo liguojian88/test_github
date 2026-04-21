@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>邮件模板</title>
+    <style>
+        body {
+            font-family: "Microsoft Yahei", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .email-container {
+            max-width: 800px;
+            border: 1px solid #eee;
+            padding: 20px;
+            background-color: #f9fafc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            /* 固定表格布局，防止列错位 */
+        }
+
+        .left-col {
+            width: 33%;
+            text-align: center;
+            vertical-align: top;
+            /* 左侧内容顶部对齐 */
+            font-size: 16px;
+            padding-top: 0;
+            /* 去除顶部内边距 */
+        }
+
+        .right-col {
+            width: 67%;
+            vertical-align: top;
+            /* 右侧内容顶部对齐 */
+            padding-top: 0;
+            /* 去除顶部内边距 */
+        }
+
+        .right-table {
+            width: 100%;
+            table-layout: fixed;
+            /* 固定右侧表格布局 */
+        }
+
+        /* 为右侧表格的列设置固定宽度比例 */
+        .right-table td:nth-child(1) {
+            width: 48%;
+            /* 第一列（编号）宽度 */
+            padding: 4px 2px;
+            vertical-align: top;
+            /* 单元格内容顶部对齐 */
+            word-break: break-all;
+        }
+
+        .right-table td:nth-child(2) {
+            width: 52%;
+            /* 第二列（文档名称/文件类型）宽度 */
+            padding: 4px 2px;
+            vertical-align: top;
+            /* 单元格内容顶部对齐 */
+            word-break: break-all;
+        }
+
+        /* label固定宽度 */
+        .label {
+            display: inline-block;
+            width: 80px;
+            font-weight: normal;
+            color: #333;
+            vertical-align: top;
+        }
+
+        .value {
+            color: #666;
+            display: inline-block;
+            width: calc(100% - 85px);
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        /* 申请原因行跨两列 */
+        .reason-row td {
+            width: 100% !important;
+            padding: 4px 2px;
+            vertical-align: top;
+            /* 申请原因内容顶部对齐 */
+        }
+
+        /* 左侧内容容器，消除默认间距 */
+        .left-content {
+            margin-top: 0;
+            padding-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <table>
+            <tr>
+                <!-- 左侧居中区域（顶部对齐） -->
+                <td class="left-col">
+                    <div class="left-content">
+                        <div><strong>${applyName}</strong></div>
+                        <div style="margin-top: 8px;">提交了${applyCategory}申请</div>
+                    </div>
+                </td>
+                <!-- 右侧布局（顶部对齐） -->
+                <td class="right-col">
+                    <table class="right-table">
+                        <tr>
+                            <td><span class="label">编号：</span><span class="value">${applyId}</span></td>
+                            <td><span class="label">文档名称：</span><span class="value">${documentName}</span></td>
+                        </tr>
+                        <tr>
+                            <td><span class="label">客户姓名：</span><span class="value">${customerName}</span></td>
+                            <td><span class="label">文件类型：</span><span class="value">${fileCategory}</span></td>
+                        </tr>
+                        <tr class="reason-row">
+                            <td colspan="2">
+                                <span class="label">申请原因：</span>
+                                <span class="value">${reason}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
